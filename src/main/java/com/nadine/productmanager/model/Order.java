@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @ToString
 @Getter
 @Setter
@@ -13,6 +15,6 @@ import lombok.ToString;
 public class Order {
     private Long id;
     private Long clientId;
-    private String createdAt;
+    private LocalDateTime date;
     private OrderStatus status;
 }
