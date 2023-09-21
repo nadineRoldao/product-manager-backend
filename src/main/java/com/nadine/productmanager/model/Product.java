@@ -1,13 +1,11 @@
 package com.nadine.productmanager.model;
 
-import com.nadine.productmanager.enums.OrderStatus;
+import com.nadine.productmanager.enums.ProductCategory;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.time.LocalDateTime;
 
 @ToString
 @Getter
@@ -15,21 +13,24 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "products")
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "client_id", nullable = false)
-    private Long clientId;
-
-    @Column(name = "date", nullable = false)
-    private LocalDateTime date;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
-    private OrderStatus status;
+    @Column(name = "category", nullable = false)
+    private ProductCategory category;
+
+    @Column(name = "price", nullable = false)
+    private Double price;
+
+    @Column(name = "link")
+    private String link;
 }
