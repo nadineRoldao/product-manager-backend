@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @EqualsAndHashCode
-
 @Entity
 @Table(name = "orders")
 public class Order {

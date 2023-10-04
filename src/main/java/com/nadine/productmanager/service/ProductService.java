@@ -1,17 +1,25 @@
 package com.nadine.productmanager.service;
 
+import com.nadine.productmanager.dto.ProductDTO;
 import com.nadine.productmanager.model.Product;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface ProductService {
 
-    List<Product> getProducts();
+    List<ProductDTO> getProducts();
 
-    Product getProduct(Long id);
+    List<ProductDTO> getActiveProducts();
 
-    Product createProduct(Product product);
+    Page<Product> getActiveProducts(Integer pageSize, Integer pageNumber);
 
-    Product updateProduct(Long id, String name, String category, Double price, String link);
+    ProductDTO getProduct(Long id);
+
+    ProductDTO createProduct(ProductDTO product);
+
+    ProductDTO updateProduct(ProductDTO productDTO);
+
+    void deleteProduct(Long id);
 
 }

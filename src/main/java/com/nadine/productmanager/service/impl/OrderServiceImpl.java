@@ -58,4 +58,17 @@ public class OrderServiceImpl implements OrderService {
         // salvar no banco
         orderRepository.save(order);
     }
+
+    @Override
+    public void finishOrder(Long id) {
+        var order = orderRepository.findById(id).orElseThrow(() -> new OrderNotFoundException());
+
+        if (OrderStatus.CANCELLED.equals(order.getStatus()) || OrderStatus.FINISHED.equals(order.getStatus())) {
+            throw new BadRequestException("Você não pode finalizar um pedido que já está finalizado ou que está cancelado");
+        }
+
+        order.setStatus(OrderStatus.FINISHED);
+
+        orderRepository.save(order);
+    }
 }
